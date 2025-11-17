@@ -1,0 +1,98 @@
+\documentclass[12p,a4paper,twoside]{article}
+%\documentclass[12p,a4paper]{article}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+%\usepackage{biblatex} %Imports biblatex package
+
+\usepackage[backend=biber,style=numeric,sorting=ynt]{biblatex}
+\addbibresource{komal.bib} %Import the bibliography file
+
+\usepackage[nottoc,numbib]{tocbibind}
+
+\usepackage[titletoc]{appendix}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[a4paper, width=150mm, top=25mm, bottom=25mm, bindingoffset=6mm]{geometry}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{float}
+\usepackage{nameref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\newcommand{\source}[1]{\caption*{Source: {#1}} }
+% code blocks
+%\usepackage{minted}
+%\usepackage[dvipsnames]{xcolor}
+%\usemintedstyle[bash]{fruity} % run on terminal for available styles $ pygmentize -L styles
+%\definecolor{codebackground}{RGB}{240, 240, 235}
+%\newsavebox{\mintedbox}
+%\newenvironment{boxminted}
+% {
+%  \VerbatimEnvironment
+%  \RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{}
+%  \begin{lrbox}{\mintedbox}
+%  \begin{minted}
+%}
+%{
+ % \end{minted}
+ % \end{lrbox}
+ % \noindent\colorbox{codebackground}{\usebox{\mintedbox}}
+ % \newline
+ %}
+
+
+\title{ {Sample}\\
+  %\vspace{5cm}
+  %\vfill
+  \text{ }
+  %\vspace{5cm}
+  \includegraphics[width=\textwidth]{sze_logo_large.png}
+  \date{\today}
+  \author{Levente Fodor - mu1g7o}
+}
+
+\begin{document}
+  \maketitle
+  \pagenumbering{gobble}
+  \newpage
+  \pagenumbering{arabic}
+
+  \tableofcontents
+  \listoffigures
+  
+  \newpage
+
+  %introduction
+  \input{sections/introduction}
+
+  %section01
+  \input{sections/section01}
+
+  %section02
+  \input{sections/section02}
+
+  %conclusion
+  \input{sections/conclusion}
+
+  \newpage
+
+  %appendix
+  \input{appendix/appendix}
+  \addcontentsline{toc}{section}{Appendix}
+  
+  %bibliography
+  \printbibliography[heading=bibintoc,title={References}] %Prints bibliography
+
+\end{document}
