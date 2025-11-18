@@ -11,4 +11,10 @@ $ pdflatex komal.tex
 # required files
 * latex.sh  
 * komal.tex  
-* komal.bib  
+* komal.bib
+
+# komal requirements  
+* header on the left side  
+  * number of exercise
+  * name of person  
+  * name of school and class
