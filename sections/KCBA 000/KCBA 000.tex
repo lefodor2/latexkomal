@@ -5,7 +5,7 @@
 %\usepackage{biblatex} %Imports biblatex package
 
 \usepackage[backend=biber,style=numeric,sorting=ynt]{biblatex}
-\addbibresource{komal.bib} %Import the bibliography file
+\addbibresource{kcba.bib} %Import the bibliography file
 
 \usepackage[nottoc,numbib]{tocbibind}
 
@@ -24,7 +24,6 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{hyperref}
-\usepackage{pdfpages}
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -44,7 +43,7 @@
 \begin{document}
 %  \maketitle
   \pagenumbering{gobble}
-  \newpage
+%  \newpage
   \pagenumbering{arabic}
 
 %  \tableofcontents
@@ -53,16 +52,9 @@
   \newpage
 
   %K 000
-  \includepdf[pages=-]{sections/KCBA 000/KCBA 000.pdf}
-
-  %K/C 001
-  \includepdf[pages=-]{sections/KCBA 001/KCBA 001.pdf}
-
-  %B 002
-  \includepdf[pages=-]{sections/KCBA 002/KCBA 002.pdf}
-
-  %A 003
-  \includepdf[pages=-]{sections/KCBA 003/KCBA 003.pdf}
+  \section*{KCBA 000}
+  \paragraph{}
+  KCBA 000
 
   \newpage
 
