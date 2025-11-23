@@ -1,0 +1,183 @@
+\documentclass[12p,a4paper,twoside]{article}
+%\documentclass[12p,a4paper]{article}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+%\usepackage{biblatex} %Imports biblatex package
+
+\usepackage[backend=biber,style=numeric,sorting=ynt]{biblatex}
+%\addbibresource{sample.bib} %Import the bibliography file
+
+\usepackage[nottoc,numbib]{tocbibind}
+
+\usepackage[titletoc]{appendix}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[a4paper, width=150mm, top=25mm, bottom=25mm, bindingoffset=6mm]{geometry}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{float}
+\usepackage{nameref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\newcommand{\source}[1]{\caption*{Source: {#1}} }
+% code blocks
+\usepackage{verbatim}
+
+%-------------------------------------------------------------------------------
+% Label format
+\DeclareCaptionLabelFormat{custom}
+{%
+        #1 \textbf{(#2)}
+}
+% Separator style
+\DeclareCaptionLabelSeparator{custom}{:} %{--}
+% Caption format
+\DeclareCaptionFormat{custom}
+{
+        #1#2#3
+        %#1#2\small #3
+}
+\captionsetup[listing]
+{
+    %format=custom,
+    %labelformat=custom%,
+    %labelsep=custom
+}
+
+%\usepackage[finalizecache]{minted} %pdflatex --shell-escape bsc.quantum.tex
+\usepackage{minted}
+%\usepackage[frozencache, cachedir=_minted-bsc.quantum]{minted} %pdflatex bsc.quantum.tex
+\definecolor{mintedbackground}{rgb}{0.95,0.95,0.95}
+
+\newminted[pythonblock]{python}{
+bgcolor=mintedbackground,
+fontsize=\scriptsize
+}
+%-------------------------------------------------------------------------------
+
+%\title{ {Sample}\\
+%  \text{ }
+%  \includegraphics[width=\textwidth]{sze_logo_large.png}
+%  \date{\today}
+%  \author{Levente Fodor}
+%}
+
+\begin{document}
+%  \maketitle
+  \pagenumbering{gobble}
+%  \newpage
+  \pagenumbering{arabic}
+
+%  \tableofcontents
+%  \listoffigures
+  
+  \newpage
+
+  %K 000
+  \section*{sample}
+  \paragraph{formulas}
+\paragraph{}
+\textbf{bra-ket notation}
+\begin{gather}
+    |0\rangle =
+    \begin{pmatrix}\label{ket0}
+        1 \\
+        0
+    \end{pmatrix} \\
+    |1\rangle =
+    \begin{pmatrix}\label{ket1}
+        0 \\
+        1
+    \end{pmatrix}
+\end{gather}
+
+\textbf{Outer product}
+\begin{equation}
+    |0\rangle\langle 1| =
+    \begin{bmatrix}
+        1 \\
+        0
+    \end{bmatrix}
+    \begin{bmatrix}
+        0 & 1
+    \end{bmatrix} =
+    \begin{bmatrix}
+        1 \cdot 0 & 1 \cdot 1 \\
+        0 \cdot 0 & 0 \cdot 1
+    \end{bmatrix} =
+    \begin{bmatrix}
+        0 & 1 \\
+        0 & 0
+    \end{bmatrix}
+    \notag
+\end{equation}
+
+\textbf{tensor product}
+\begin{equation}
+    \begin{pmatrix}
+        a \\
+        b
+    \end{pmatrix}
+    \otimes
+    \begin{pmatrix}
+        c \\
+        d
+    \end{pmatrix} =
+    \begin{pmatrix}
+        a \ast c \\
+        a \ast d \\
+        b \ast c \\
+        b \ast d
+    \end{pmatrix}
+\end{equation}
+
+\textbf{qubit representation}
+\begin{equation}\label{qubit-eq}
+    |\psi\rangle = a|0\rangle + b|1\rangle, \quad a,b \in \mathbb{C}, \quad
+    |a|^{2} + |b|^{2} = 1, \quad |\psi\rangle \sim e^{i\phi}|\psi\rangle.
+\end{equation}
+
+\textbf{bloch sphere}
+\begin{listing}[H]
+\begin{pythonblock}
+    # import libaries
+    import matplotlib.pyplot as plt
+    import numpy as np
+    from qiskit.visualization import plot_bloch_vector
+
+    # generate bloch sphere
+    plot_bloch_vector(
+        [1, np.pi/2, np.pi/3],
+        coord_type='spherical',
+        title="Bloch Sphere")
+
+    # display
+    plt.show()
+\end{pythonblock}
+\caption{Simple Bloch-sphere}
+\label{code:simple-bloch-sphere}
+\end{listing}
+
+  \newpage
+
+  %appendix
+%  \input{appendix/appendix}
+%  \addcontentsline{toc}{section}{Appendix}
+  
+  %bibliography
+  \printbibliography[heading=bibintoc,title={References}] %Prints bibliography
+
+\end{document}
